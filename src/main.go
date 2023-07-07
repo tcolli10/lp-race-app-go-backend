@@ -9,10 +9,7 @@ import (
 func main() {
 	db.Connect()
 	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
+	setupRoutes(app)
 
 	app.Listen(":3000")
 }

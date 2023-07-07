@@ -4,8 +4,8 @@ import "gorm.io/gorm"
 
 type User struct {
 	gorm.Model
-	name     string `json:"name"`
-	gameName string `json:"gameName"`
-	tagLine  string `json:"tagLine"`
-	puuid    string `json:"puuid"`
+	Name     string `json:"name" gorm:"text;not null;"`
+	GameName string `json:"gameName" gorm:"text;default:null"`
+	TagLine  string `json:"tagLine" gorm:"text;default:null"`
+	Puuid    string `json:"puuid" gorm:"text;"`
 }
