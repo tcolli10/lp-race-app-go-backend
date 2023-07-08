@@ -7,7 +7,11 @@ import (
 )
 
 func setupRoutes(app *fiber.App) {
+
+	//	"/"
 	app.Get("/", handlers.ListUsers)
+
+	//	"/user"
 	app.Post("/user", handlers.CreateUser)
 	app.Delete("/user", handlers.DeleteUserByName)
 }
