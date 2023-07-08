@@ -19,3 +19,16 @@ func CreateUser(ctx *fiber.Ctx) error {
 	db.DB.Db.Create(&user)
 	return ctx.Status(200).JSON(user)
 }
+
+func DeleteUserByName(ctx *fiber.Ctx) error {
+	user := new(models.User)
+
+	if err := ctx.BodyParser(user); err != nil {
+		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": err.Error(),
+		})
+	}
+
+	db.DB.Db.Where("name = ?", user.Name).Delete(&models.User{})
+	return ctx.Status(200).JSON(user)
+}
